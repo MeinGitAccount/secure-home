@@ -30,7 +30,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth ->
                         auth
-                                .requestMatchers(HttpMethod.GET, "/**").authenticated()
+                                .requestMatchers(HttpMethod.GET, "/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT, "/**").authenticated()
                                 .requestMatchers(HttpMethod.DELETE, "/**").authenticated()
