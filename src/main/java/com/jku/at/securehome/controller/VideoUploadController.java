@@ -14,7 +14,7 @@ public class VideoUploadController {
         this.fileStorageService = videoStorageService;
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<String> uploadFile(
             @RequestParam(name = "file", required = false) MultipartFile file
     ) {
