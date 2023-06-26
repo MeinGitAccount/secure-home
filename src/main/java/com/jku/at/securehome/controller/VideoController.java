@@ -1,6 +1,7 @@
 package com.jku.at.securehome.controller;
 
 import com.jku.at.securehome.services.VideoService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
@@ -41,5 +42,10 @@ public class VideoController {
                 .status(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(new ByteArrayResource(videoService.getVideo(name).getData()));
+    }
+
+    @GetMapping("/allRooms")
+    public ResponseEntity<List<String>> getAllRoomNames() {
+        return ResponseEntity.ok(videoService.getAllRoomNames());
     }
 }

@@ -36,6 +36,11 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    public List<String> getAllRoomNames() {
+        return repo.getAllRoomNames();
+    }
+
+    @Override
     public void saveVideo(MultipartFile file, String name, String room) throws IOException {
         if(repo.existsByName(name)){
             throw new VideoAlreadyExistsException();

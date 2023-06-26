@@ -20,4 +20,7 @@ public interface VideoRepository extends JpaRepository<Video, Integer> {
 
     @Query("SELECT name FROM Video WHERE room = :room")
     List<String> getAllVideoNamesByRoom(@Param("room") String room);
+
+    @Query("SELECT DISTINCT room FROM Video")
+    List<String> getAllRoomNames();
 }

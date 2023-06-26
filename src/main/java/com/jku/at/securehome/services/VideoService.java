@@ -14,4 +14,6 @@ public interface VideoService {
     List<String> getAllVideoNames();
 
     List<String> getAllVideoNamesByRoom(String room);
+
+    List<String> getAllRoomNames();
 }
