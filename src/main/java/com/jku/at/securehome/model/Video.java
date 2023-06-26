@@ -18,8 +18,12 @@ public class Video {
     @Lob
     private byte[]data;
 
-    public Video(String name, byte[] data) {
+    @Column(length=100)
+    private String room;
+
+    public Video(String name, byte[] data, String room) {
         this.name = name;
         this.data = data;
+        this.room = room;
     }
 }

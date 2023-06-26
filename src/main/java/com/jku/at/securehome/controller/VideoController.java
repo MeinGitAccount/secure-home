@@ -1,8 +1,6 @@
 package com.jku.at.securehome.controller;
 
-import com.jku.at.securehome.model.Video;
 import com.jku.at.securehome.services.VideoService;
-import com.jku.at.securehome.services.VideoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
@@ -22,14 +20,19 @@ public class VideoController {
     private VideoService videoService;
 
     @PostMapping("/video")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("name") String name) throws IOException {
-        videoService.saveVideo(file, name);
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, @RequestParam("room") String room) throws IOException {
+        videoService.saveVideo(file, name, room);
         return ResponseEntity.ok("Video saved.");
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<String>> getAllVideoNames() {
         return ResponseEntity.ok(videoService.getAllVideoNames());
+    }
+
+    @GetMapping("/all/{room}")
+    public ResponseEntity<List<String>> getAllVideoNamesByRoom(@PathVariable String room) {
+        return ResponseEntity.ok(videoService.getAllVideoNamesByRoom(room));
     }
 
     @GetMapping("/video/{name}")

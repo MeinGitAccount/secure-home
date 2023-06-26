@@ -9,7 +9,9 @@ import java.util.List;
 public interface VideoService {
     Video getVideo(String name);
 
-    void saveVideo(MultipartFile file, String name) throws IOException;
+    void saveVideo(MultipartFile file, String name, String room) throws IOException;
 
     List<String> getAllVideoNames();
+
+    List<String> getAllVideoNamesByRoom(String room);
 }
